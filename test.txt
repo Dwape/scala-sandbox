@@ -1,0 +1,119 @@
+Scala
+
+híbrido entre funcional y orientado a objetos
+Compila a bytecode, código nativo o javascript puro
+
+lenguaje funcional -> por un lado la parte declarativa y por otro la parte funcional
+
+Scala REPL (ammonite- > REPL alternativo)
+sbt (console -> REPL)
+
+val (inmutable) -> puede apuntar a una lista mutable o inmutable
+var (mutable) -> puede apuntar a una lista mutable o inmutable
+
+val list = List(1, 2, 3) //lista de enteros
+//elementos agregados al principio
+
+val x:Int = 5
+
+list.foreach
+final override def foreach[U](f: Int => U): Unit
+
+List[T] {
+foreach[U](f: T => U): Unit
+}
+
+(e: Int) => println(e) //una función
+val print = (e: Int) => println(e) //le pongo un nombre
+
+list.foreach((e: Int) => println(e))
+
+list.foreach(e => println(e)) //podemos no poner el tipo de e (lo puede asumir porque la función se aplica sobre una lista de int)
+
+list.foreach(println) //println ya es una función
+
+list.map(_ + 1) //me refiero al primer argumento de la función con _ . La segunda vez que uso _ hago referencia al segundo argumento. Si tengo que usar un parámetro dos veces, le tengo que poner nombre.
+
+list.reduce //es parecido a un fold pero no le podes pasar un elemento inicial (las listas tienen que tener por lo menos dos elementos)
+def reduce[A1 >: Int](op: (A1, A1) => A1): A1
+
+list.foreach({e => println(e)}) //se pueden pasar funciones multilinea
+list.foreach{e => println(e)} //opcionalmente podemos eliminar los paréntesis
+
+list foreach println //tambien se puede escribir así
+
+1. //1 es un objeto
+
+1.+(23) //el punto y los paréntesis son opcionales 1 + 23
+
+Las funciones pueden tener cualquier nombre (ej +)
+
+Hay colecciones mutables e inmutables
+
+list.count(_>1)
+
+list.exists(_>2) //si alguno cumple la condición devuelve true
+
+list.filter(_ != 2) //devuelve una lista con todos los elementos distintos de dos
+
+formal //si se cumple para todos
+
+0 :: list //agrega el elemento al principio de la lista
+0 :: list == list.::(0)
+
+Los métodos que empiezan con : -> se aplican al elemento de la derecha
+
+list.mkString("List(", ", ", ")")
+
+hay tuplas -> (1, "abc", true) (Int, String, Boolean)
+
+List(1, "abc", true) // List[Any]
+
+//los paréntesis también son métodos -> list.count(_ > 2)
+
+list.apply(2) equivalente a list(2) -> apply aplica la llamada de función, pero no es obligatorio
+
+val (e1, e2, e3) = (1, "abc", true) //e1 = 1; e2 = "abc", e3 = true
+
+("a", 1)
+"a".->
+def ->[B](y: B): (String, B)
+"a" -> 1
+
+//hay sets -> Set("A", "B", "A") //no tiene elementos repetidos
+
+mapa //colección de tuplas de dos elementos
+
+Map(("Juan", 23), ("Pepe", 40))
+Map("Juan" -> 23, "Pepe" -> 40)
+
+res65.map {case (a, b) => (b, a) } //case para pattern matching
+
+Array(1, 2, 3) // array como el de Java
+
+String también es una colección
+
+"Hola".map(_.toUpper)
+
+Seq("a", "b") //da una secuencia
+
+Funciones de alto orden (funciones que reciben funciones como parámetro)
+
+map.get("key") //devuelve un some del valor (puede no existir)
+map("key") //devuelve el valor directamente (tiene que existir)
+
+list.sliding(n) //combinaciones de n consecutivas
+
+flatten
+
+map y flatten al mismo tiempo -> flatMap
+
+def print(x: Any): Unit = println("value: " + x)
+
+Option[T] //como el Maybe de Haskell (un contenedor de un único elemento
+Some[T]
+None
+
+.getOrElse()
+
+List(1, 2, 3).foldLeft(0)(_ + _) //dos grupos de argumentos

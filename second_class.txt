@@ -1,0 +1,56 @@
+class
+case class
+object
+companion object
+case object
+trait
+abstract class
+sealed class
+sealed trait
+parametric type | type constructors
+types (alias)
+type intersection (with) / compound type
+implicit classes
+package
+inner classes
+enums
+annotation
+functions
+partial functions
+value classes
+implicit parameters
+Nothing
+for comprehensions
+Option
+Either
+Try
+bound
+type classes
+
+b.copy() //the same object
+b.copy(x = 2) //takes the original object and returns a new object with the old values but with the new values for x
+
+val Point(x, y) = b
+
+Is the same as
+
+val x = b.x
+val y = b.y
+
+case object // implements same methods as a case class. There is only an instance (it is like a singleton).
+// can be used in a similar way as an Erlang atom
+
+val anyList: List[Any] = List(1, 2, 3) // this can be done in Scala
+
+parametric type | type constructors
+
+List[T] // T is a generic parameter. We can create a List with any type and the List will construct a list of that type
+// for example: List[Int]
+
+List[+T]
+List[Any] = List(1, 2, 3) // can assign as Int is subtype of Any
+
+List[-T]
+List[Any] = List(1, 2, 3) // can't assign. Int should be a supertype of Any for this to be allowed.
+
+partial functions // they have their own function
